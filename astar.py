@@ -23,6 +23,7 @@ def astar(graph, start, goal, heuristic):
     open_list = []
     heapq.heappush(open_list, (heuristic(start, goal), 0, start, [start]))  # (estimated total cost, path cost, state, path)
     visited = set()
+    nodes_created = 1
 
     while open_list:
         estimated_total_cost, path_cost, current_state, path = heapq.heappop(open_list)
@@ -31,7 +32,7 @@ def astar(graph, start, goal, heuristic):
             continue
 
         if current_state == goal:
-            return path
+            return path, nodes_created
 
         visited.add(current_state)
 
@@ -39,5 +40,6 @@ def astar(graph, start, goal, heuristic):
             if next_state not in visited:
                 new_path_cost = path_cost + 1  # Assuming each move costs 1
                 heapq.heappush(open_list, (new_path_cost + heuristic(next_state, goal), new_path_cost, next_state, path + [next_state]))
+                nodes_created +=1
 
-    return None
+    return None, nodes_created

@@ -38,13 +38,13 @@ def main():
             print("Solving...")
 
             if algo_choice == '1':
-                path = bfs(graph, start_state, goal_state)
+                path, _ = bfs(graph, start_state, goal_state)
             elif algo_choice == '2':
-                path = astar(graph, start_state, goal_state, zero_heuristic)
+                path, _ = astar(graph, start_state, goal_state, zero_heuristic)
             elif algo_choice == '3':
-                path = astar(graph, start_state, goal_state, manhattan_distance)
+                path, _ = astar(graph, start_state, goal_state, manhattan_distance)
             elif algo_choice == '4':
-                path = astar(graph, start_state, goal_state, custom_heuristic)
+                path, _ = astar(graph, start_state, goal_state, custom_heuristic)
             else:
                 print("Invalid algorithm choice")
                 continue

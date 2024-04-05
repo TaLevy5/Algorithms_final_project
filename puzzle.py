@@ -60,15 +60,6 @@ def random_board(puzzle_type, num_moves):
 
     return board
 
-
-
-
-
-
-
-
-
-
 def print_board(board, size):
     for i in range(size):
         row = board[i*size:(i+1)*size]

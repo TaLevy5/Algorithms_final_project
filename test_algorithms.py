@@ -6,21 +6,20 @@ from astar import astar, zero_heuristic, manhattan_distance
 
 def test_algorithm(graph, start, goal, algorithm, heuristic=None):
     start_time = time.perf_counter()
-    initial_node_count = len(graph.vertices)  # Record initial number of nodes
 
     if heuristic:
-        path = algorithm(graph, start, goal, heuristic)
+        path, nodes_created = algorithm(graph, start, goal, heuristic)
     else:
-        path = algorithm(graph, start, goal)
+        path, nodes_created = algorithm(graph, start, goal)
 
     end_time = time.perf_counter()
-    nodes_created = len(graph.vertices) - initial_node_count  # Calculate nodes created during this run
 
     return {
         'runtime': end_time - start_time,
         'path_length': len(path) if path else 0,
         'nodes_created': nodes_created
     }
+
 
 
 def run_tests(puzzle_size, num_puzzles, num_moves):

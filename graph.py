@@ -48,8 +48,6 @@ class Graph:
         # Recursion can be controlled to avoid exploring too deep if necessary
         # For testing, you might want to limit the depth or avoid recursion altogether
 
-     
-     
     def display_graph(self):
         # This is a helper method to display the graph's vertices and their neighbors
         for vertex, neighbors in self.vertices.items():

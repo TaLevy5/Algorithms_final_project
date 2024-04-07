@@ -15,9 +15,26 @@ def zero_heuristic(current_state, goal_state):
     return 0
 
 def custom_heuristic(current_state, goal_state):
-    # Implement your custom heuristic here
-    # Example: Overestimate by adding a constant value to the Manhattan distance
-    return manhattan_distance(current_state, goal_state) + 10
+    size = int(len(current_state) ** 0.5)
+    max_distance = 2 * (size - 1)  # Corrected maximum distance calculation
+
+    total_distance = 0
+    for i in range(1, size * size):
+        current_pos = current_state.index(i)
+        goal_pos = goal_state.index(i)
+        current_row, current_col = divmod(current_pos, size)
+        goal_row, goal_col = divmod(goal_pos, size)
+
+        tile_distance = abs(current_row - goal_row) + abs(current_col - goal_col)
+        if tile_distance == 0:
+            continue  # Skip if the tile is already in the correct place
+
+        # Apply the inverse distance scaling and multiply by max_distance
+        inverse_scaled_distance = max_distance / (tile_distance + 1)
+        total_distance += inverse_scaled_distance
+
+    return total_distance
+
 
 def astar(graph, start, goal, heuristic):
     open_list = []

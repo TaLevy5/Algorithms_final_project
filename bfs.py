@@ -1,5 +1,4 @@
 from collections import deque
-from graph import Graph  # Import the Graph class to use its methods
 
 def bfs(graph, start, goal):
     queue = deque([(start, [])])  # Initialize the queue with the start state and an empty path

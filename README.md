@@ -100,8 +100,5 @@ A* Search uses heuristics to guide its search. The project includes three heuris
 ## Conclusion
 This project demonstrates the implementation of various search algorithms to solve sliding puzzle games, showcasing their differences in performance and efficiency.
 
-## License
-This project is licensed under the MIT License.
-
 ## Author
-- Tal
+- Tal Levy

@@ -50,8 +50,10 @@ def main():
                 continue
 
             if path:
-                print(f"Solution found in {len(path)} steps:")
-                for step, state in enumerate(path, start=1):
+                print(f"Start Board:")
+                print_board(path[0], puzzle_size)
+                print(f"\nSolution found in {len(path) - 1} steps:\n")
+                for step, state in enumerate(path[1:], start=1):
                     print(f"Step number {step}:")
                     print_board(state, puzzle_size)
                     print()  # Add an empty line for visual separation between steps
